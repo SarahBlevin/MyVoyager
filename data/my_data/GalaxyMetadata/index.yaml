@@ -1,7 +1,0 @@
-CommunitySurvey: CommunitySurveys.yaml
-Content: Content.yaml
-Namespace: Namespaces.yaml
-ProviderNamespace: ProviderNamespaces.yaml
-Repository: Repositories.yaml
-Role: Roles.yaml
-Tag: Tags.yaml
