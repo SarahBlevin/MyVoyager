@@ -1,0 +1,100 @@
+1:
+  canonical_id: 00willo.sublimetext-3
+  commit_message: "Add molecule test (#1)\n\n* Adds yamllint for local and molecule\r\n\r\n*
+    Adds molecule and use in travis CI\r\n\r\n* Test multiple distro in single travis
+    run\r\n\r\n* Relicence to MIT\r\n\r\n* Adds build badge\r\n\r\n* Revise supported
+    ansible versions"
+  commit_sha: a1c5df38855094dbd9b09e1d2f576cb4644942d3
+  company: null
+  creation_date: '2023-05-08T20:18:03.967956+00:00'
+  dependencies: []
+  description: Install Sublime Text 3 on your machine. Supports both the dev and stable
+    release channels.
+  download_count: 144
+  entity_id: 1
+  imported_date: '2019-04-26T23:03:27.101139-04:00'
+  min_ansible_version: null
+  modification_date: '2023-10-29T18:44:31.726634+00:00'
+  name: sublimetext-3
+  namespace_id: 1
+  provider_namespace_id: 13604
+  repository_name: ansible-role_sublimetext
+  role_type: null
+  tags:
+  - development
+  - editor
+  - ide
+  - workstation
+  username: 00willo
+  versions: []
+2:
+  canonical_id: 030.ansible_bfg
+  commit_message: '[GH-1] bfg could not be found.'
+  commit_sha: 18a9d15033bb5131d0133187053b49a9f207f4f0
+  company: null
+  creation_date: '2023-05-08T20:18:04.098249+00:00'
+  dependencies: []
+  description: ansible-bfg
+  download_count: 1273
+  entity_id: 2
+  imported_date: '2020-05-03T03:55:52.049714-04:00'
+  min_ansible_version: null
+  modification_date: '2023-10-29T18:44:31.731039+00:00'
+  name: ansible_bfg
+  namespace_id: 2
+  provider_namespace_id: 13605
+  repository_name: ansible-bfg
+  role_type: null
+  tags:
+  - bfg
+  username: '030'
+  versions:
+  - entity_id: 125411
+    release_date: '2020-05-03T03:29:17-04:00'
+    version: 1.0.1
+  - entity_id: 124481
+    release_date: '2020-04-22T03:59:00-04:00'
+    version: 1.0.0
+3:
+  canonical_id: 030.ansible_eksctl
+  commit_message: Update to 0.105.0.
+  commit_sha: 275fcab4cf47da97c8516d6df0efe80075362683
+  company: null
+  creation_date: '2023-05-08T20:18:04.529182+00:00'
+  dependencies: []
+  description: ansible-eksctl
+  download_count: 155
+  entity_id: 3
+  imported_date: '2022-07-18T13:20:32.817614-04:00'
+  min_ansible_version: null
+  modification_date: '2023-10-29T18:44:31.735362+00:00'
+  name: ansible_eksctl
+  namespace_id: 2
+  provider_namespace_id: 13605
+  repository_name: ansible-eksctl
+  role_type: null
+  tags:
+  - eksctl
+  username: '030'
+  versions:
+  - entity_id: 189723
+    release_date: '2022-07-18T13:19:05-04:00'
+    version: 1.0.6
+  - entity_id: 186689
+    release_date: '2022-06-03T00:51:11-04:00'
+    version: 1.0.5
+  - entity_id: 166568
+    release_date: '2021-10-18T07:44:15-04:00'
+    version: 1.0.4
+  - entity_id: 165872
+    release_date: '2021-10-08T11:02:41-04:00'
+    version: 1.0.3
+  - entity_id: 162952
+    release_date: '2021-08-27T04:30:15-04:00'
+    version: 1.0.2
+  - entity_id: 127973
+    release_date: '2020-05-29T13:30:22-04:00'
+    version: 1.0.1
+  - entity_id: 127971
+    release_date: '2020-05-29T13:03:04-04:00'
+    version: 1.0.0
