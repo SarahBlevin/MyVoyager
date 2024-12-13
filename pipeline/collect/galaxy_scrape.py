@@ -60,12 +60,13 @@ class GalaxyScrape(Stage[GalaxyAPIPage, MainConfig]):
         role_search_ids: Set[int] = set()
         highest_role_page_num = 0
 
-        # Get the configured max_roles value (None means no limit)
         max_roles = self.config.max_roles
-        roles_loaded = 0  # Track how many roles have been loaded
+        roles_loaded = 0
 
         for page in results:
             if page.page_type == 'roles':
+                highest_role_page_num = max(
+                        highest_role_page_num, page.page_num)
                 highest_role_page_num = max(highest_role_page_num, page.page_num)
                 for role in cast(List[Dict[str, Any]], page.response['results']):
                     # Stop if we've already loaded the max number of roles, unless max_roles is None
@@ -81,15 +82,11 @@ class GalaxyScrape(Stage[GalaxyAPIPage, MainConfig]):
                         break
                     role_search_ids.add(role['id'])
                     roles_loaded += 1  # Increment roles loaded
-
             # Exit if we've hit the max role count, unless max_roles is None
             if max_roles is not None and roles_loaded >= max_roles:
                 break
-
-        # Now that we have the IDs of missing roles, let's load them, but respect max_roles
         missing_ids = role_search_ids - role_ids
 
-        # Limit the number of roles to max_roles if specified
         remaining_roles = max_roles - roles_loaded if max_roles is not None else float('inf')
         if max_roles is None:
             # If max_roles is None, no limit, import all missing roles
@@ -118,7 +115,6 @@ class GalaxyScrape(Stage[GalaxyAPIPage, MainConfig]):
         return results
 
 
-
     def load_pages(self, page_name: str, page_url: str) -> List[GalaxyAPIPage]:
         cached_results = self.try_load_pages(page_name)
         if cached_results is not None:
@@ -132,17 +128,14 @@ class GalaxyScrape(Stage[GalaxyAPIPage, MainConfig]):
         results: List[GalaxyAPIPage] = []
 
         total_set = False
-        roles_loaded = 0  # Keep track of the number of roles loaded
-
+        roles_loaded = 0
         for page in it_pages:
             if self.config.max_roles is not None and roles_loaded >= self.config.max_roles:
                 break  # Stop loading more pages if we reach the max roles, unless max_roles is None
-
             if not total_set:
                 pbar.total = (cast(int, page.response['count']) // page_size) + 1
                 total_set = True
             pbar.update(1)
-
             # Check how many roles are on this page and update the count
             if page.page_type == 'roles':
                 roles_in_page = len(page.response.get('results', []))
@@ -151,21 +144,15 @@ class GalaxyScrape(Stage[GalaxyAPIPage, MainConfig]):
                     roles_to_load = self.config.max_roles - roles_loaded
                     page.response['results'] = page.response['results'][:roles_to_load]
                     roles_in_page = roles_to_load
-
                 roles_loaded += roles_in_page
-
             results.append(page)
 
             # Stop processing if we've hit the role limit, unless max_roles is None
             if self.config.max_roles is not None and roles_loaded >= self.config.max_roles:
                 break
-
         pbar.close()
         self.save_pages(results)
         return results
-            
-
-
 
     def save_pages(self, results: List[GalaxyAPIPage]) -> None:
         dataset_dir_path = self.config.output_directory / self.dataset_dir_name
