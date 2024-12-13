@@ -96,6 +96,7 @@ class Clone(Stage[GitRepo, CloneConfig], requires=ExtractRoleMetadata):
         for repo in repos:
             try:
                 user, repo_name = self._parse_info(repo)
+                print(user, repo_name)
                 path = self.clone(user, repo_name, repo)
             except CloneException as exc:  # pragma: no cover
                 tqdm.write(f'Failed to clone repository {repo.github_url}: {exc}')

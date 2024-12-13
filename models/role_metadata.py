@@ -456,131 +456,136 @@ class Repository(GalaxyEntity):
 
     entity_id: int
 
+    owner: str
+
     name: str
     original_name: str
-    description: Optional[str]
-    readme: Optional[str]
+    # description: Optional[str]
+    # readme: Optional[str]
 
     commit_sha: Optional[str]
-    commit_creation_date: Optional[pendulum.DateTime]
+    # commit_creation_date: Optional[pendulum.DateTime]
     commit_message: Optional[str]
 
-    is_deprecated: bool
-    is_enabled: bool
-    format: Optional[str]
-    download_url: str
+    # is_deprecated: bool
+    # is_enabled: bool
+    # format: Optional[str]
+    # download_url: str
     github_url: str
-    import_branch: Optional[str]
-    travis_ci_build_url: Optional[str]
-    travis_ci_status_badge_url: Optional[str]
-    versions: List[Dict[str, str]]
+    # import_branch: Optional[str]
+    # travis_ci_build_url: Optional[str]
+    # travis_ci_status_badge_url: Optional[str]
+    # versions: List[Dict[str, str]]
 
-    download_count: int
-    stargazers_count: int
-    watchers_count: int
-    forks_count: int
-    open_issues_count: int
+    # download_count: int
+    # stargazers_count: int
+    # watchers_count: int
+    # forks_count: int
+    # open_issues_count: int
 
-    community_survey_score: Optional[float]
-    community_surveys: List[XrefID]
-    quality_score: Optional[float]
-    latest_quality_score_date: Optional[pendulum.DateTime]
+    # community_survey_score: Optional[float]
+    # community_surveys: List[XrefID]
+    # quality_score: Optional[float]
+    # latest_quality_score_date: Optional[pendulum.DateTime]
 
-    content_counts: Dict[str, int]
-    content_ids: List[XrefID]
-    provider_namespace_id: XrefID
-    namespace_id: Optional[XrefID]
+    # content_counts: Dict[str, int]
+    # content_ids: List[XrefID]
+    # provider_namespace_id: XrefID
+    # namespace_id: Optional[XrefID]
 
-    last_import_created_date: Optional[pendulum.DateTime]
-    last_import_modified_date: Optional[pendulum.DateTime]
-    last_import_started_date: Optional[pendulum.DateTime]
-    last_import_finished_date: Optional[pendulum.DateTime]
-    last_import_status: Optional[str]
+    # last_import_created_date: Optional[pendulum.DateTime]
+    # last_import_modified_date: Optional[pendulum.DateTime]
+    # last_import_started_date: Optional[pendulum.DateTime]
+    # last_import_finished_date: Optional[pendulum.DateTime]
+    # last_import_status: Optional[str]
 
     creation_date: pendulum.DateTime
     modification_date: pendulum.DateTime
 
     @property
     def id(self) -> str:
-        return str(self.entity_id)
+        return str(self.name)
 
     @classmethod
     def from_galaxy_json(cls, json: Dict[str, Any], surveys: Dict[int, CommunitySurvey]) -> Repository:  # type: ignore[misc, override]
         # Sanity checks
-        assert json['active'] is None
-        assert json['external_url']
-        assert json['name']
+        # assert json['active'] is None
+        # assert json['external_url']
+        # assert json['name']
 
-        assert json['clone_url'] == json['external_url'] + '.git'
+        # assert json['clone_url'] == json['external_url'] + '.git'
 
         smry = json['summary_fields']
+        repo = smry['repository']
 
         attrs: Dict[str, Any] = {}
 
         attrs['entity_id'] = json['id']
-        attrs['name'] = json['name']
-        attrs['original_name'] = json['original_name']
-        attrs['description'] = json['description'] or None
-        attrs['readme'] = json['readme'] or None
+        attrs['name'] = repo['name']
+        attrs['original_name'] = repo['original_name']
+        attrs['owner'] = json['github_user']
+        attrs['github_url'] = _create_gh_link(attrs['owner'], attrs['name'])
+        # attrs['description'] = json['description'] or None
+        # attrs['readme'] = json['readme'] or None
 
         attrs['commit_sha'] = json['commit'] or None
-        attrs['commit_creation_date'] = _parse_date(
-                json['commit_created'], may_be_none=True)
+        # attrs['commit_creation_date'] = _parse_date(
+        #json['commit_created'], may_be_none=True)
         attrs['commit_message'] = json['commit_message'] or None
 
-        attrs['is_deprecated'] = json['deprecated']
-        attrs['is_enabled'] = json['is_enabled']
-        attrs['format'] = json['format'] or None
-        attrs['download_url'] = json['download_url']
-        attrs['github_url'] = json['external_url']
-        attrs['import_branch'] = json['import_branch'] or None
-        attrs['travis_ci_build_url'] = json['travis_build_url'] or None
-        attrs['travis_ci_status_badge_url'] = json['travis_status_url'] or None
-        attrs['versions'] = smry['versions']
+        # attrs['is_deprecated'] = json['deprecated']
+        # attrs['is_enabled'] = json['is_enabled']
+        # attrs['format'] = json['format'] or None
+        # attrs['download_url'] = json['download_url']
+        # attrs['github_url'] = json['external_url']
+        # attrs['import_branch'] = json['import_branch'] or None
+        # attrs['travis_ci_build_url'] = json['travis_build_url'] or None
+        # attrs['travis_ci_status_badge_url'] = json['travis_status_url'] or None
+        # attrs['versions'] = smry['versions']
 
-        attrs['download_count'] = json['download_count']
-        attrs['stargazers_count'] = json['stargazers_count']
-        attrs['watchers_count'] = json['watchers_count']
-        attrs['forks_count'] = json['forks_count']
-        attrs['open_issues_count'] = json['open_issues_count']
+        # attrs['download_count'] = json['download_count']
+        # attrs['stargazers_count'] = json['stargazers_count']
+        # attrs['watchers_count'] = json['watchers_count']
+        # attrs['forks_count'] = json['forks_count']
+        # attrs['open_issues_count'] = json['open_issues_count']
 
-        attrs['community_survey_score'] = json['community_score']
-        attrs['community_surveys'] = [
-                XrefID(CommunitySurvey, srv.entity_id)
-                for srv in surveys.values()
-                if srv.reviewed_repository.entity_id == json['id']]
-        attrs['quality_score'] = json['quality_score']
-        attrs['latest_quality_score_date'] = _parse_date(
-                json['quality_score_date'], may_be_none=True)
+        # attrs['community_survey_score'] = json['community_score']
+        # attrs['community_surveys'] = [
+        #         XrefID(CommunitySurvey, srv.entity_id)
+        #         for srv in surveys.values()
+        #         if srv.reviewed_repository.entity_id == json['id']]
+        # attrs['quality_score'] = json['quality_score']
+        # attrs['latest_quality_score_date'] = _parse_date(
+        #         json['quality_score_date'], may_be_none=True)
 
-        attrs['content_counts'] = smry['content_counts']
-        attrs['content_ids'] = [
-                XrefID(Content, cnt['id']) for cnt in smry['content_objects']]
-        attrs['provider_namespace_id'] = XrefID(
-                ProviderNamespace, smry['provider_namespace']['id'])
-        try:
-            attrs['namespace_id'] = XrefID(Namespace, smry['namespace']['id'])
-        except KeyError:
-            attrs['namespace_id'] = None
+        # attrs['content_counts'] = smry['content_counts']
+        # attrs['content_ids'] = [
+        #         XrefID(Content, cnt['id']) for cnt in smry['content_objects']]
+        # attrs['provider_namespace_id'] = XrefID(
+        #         ProviderNamespace, smry['provider_namespace']['id'])
+        # try:
+        #     attrs['namespace_id'] = XrefID(Namespace, smry['namespace']['id'])
+        # except KeyError:
+        #     attrs['namespace_id'] = None
 
-        imprt = smry['latest_import']
-        if imprt:
-            attrs['last_import_created_date'] = _parse_date(
-                    imprt['created'], may_be_none=False)
-            attrs['last_import_modified_date'] = _parse_date(
-                    imprt['modified'], may_be_none=False)
-            attrs['last_import_started_date'] = _parse_date(
-                    imprt['started'], may_be_none=True)
-            attrs['last_import_finished_date'] = _parse_date(
-                    imprt['finished'], may_be_none=True)
-            assert imprt['state']
-            attrs['last_import_status'] = imprt['state']
-        else:
-            attrs['last_import_created_date'] = None
-            attrs['last_import_modified_date'] = None
-            attrs['last_import_started_date'] = None
-            attrs['last_import_finished_date'] = None
-            attrs['last_import_status'] = None
+        # imprt = smry['latest_import']
+        # if imprt:
+        #     attrs['last_import_created_date'] = _parse_date(
+        #             imprt['created'], may_be_none=False)
+        #     attrs['last_import_modified_date'] = _parse_date(
+        #             imprt['modified'], may_be_none=False)
+        #     attrs['last_import_started_date'] = _parse_date(
+        #             imprt['started'], may_be_none=True)
+        #     attrs['last_import_finished_date'] = _parse_date(
+        #             imprt['finished'], may_be_none=True)
+        #     assert imprt['state']
+        #     attrs['last_import_status'] = imprt['state']
+        # else:
+        #     attrs['last_import_created_date'] = None
+        #     attrs['last_import_modified_date'] = None
+        #     attrs['last_import_started_date'] = None
+        #     attrs['last_import_finished_date'] = None
+        #     attrs['last_import_status'] = None
 
         _extend_with_dates(attrs, json)
 
@@ -843,7 +848,7 @@ class GalaxyMetadata(Model):
         attrs['provider_namespaces'] = _create_all(
                 meta_map.provider_namespaces.values(), ProviderNamespace)
         attrs['repositories'] = _create_all(
-                meta_map.repositories.values(), Repository, surveys=attrs['community_surveys'])
+                meta_map.roles.values(), Repository)
         attrs['tags'] = _create_all(meta_map.tags.values(), Tag)
         # attrs['users'] = _create_all(meta_map.users.values(), User)
 
