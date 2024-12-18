@@ -19,6 +19,9 @@ from config import MainConfig
 from models import Model
 from util import capitalized_to_underscored
 
+from shutil import rmtree
+
+
 
 IDType = str
 
@@ -155,21 +158,30 @@ class Stage(ABC, Generic[ResultType, ConfigType]):
         """Get the directory name for the stage in the dataset."""
         raise NotImplementedError()
 
+    def delete_output_directory(self) -> None:
+        """Delete the output directory for the stage."""
+        dataset_dir_path = self.config.output_directory / self.dataset_dir_name
+        if dataset_dir_path.exists() and dataset_dir_path.is_dir():
+            rmtree(dataset_dir_path)
+            print(f"Deleted directory: {dataset_dir_path}")
+        else:
+            print(f"No directory to delete for: {dataset_dir_path}")
+
     @final
     @classmethod
     def process(
             cls, config: ConfigType, dependency: bool = False
     ) -> ResultMap[ResultType]:
-        """Process the stage.
-
-        Report results if the report flag is set in the config.
-        If the stage was processed previously and its results are already in
-        the dataset, return it from there.
-        """
+        """Process the stage with optional deletion logic."""
         stage = cls(config)
+
+        # Only delete the output directory for the current stage, not dependencies
+        if config.delete and not dependency:
+            stage.delete_output_directory()
+
         from_cache = False
 
-        # Always try to load from the dataset if it's a dependency
+        # Try to load from the dataset if it's a dependency
         if not config.force or dependency:
             try:
                 results = stage.load_from_dataset()
@@ -180,7 +192,6 @@ class Stage(ABC, Generic[ResultType, ConfigType]):
         else:
             results = stage._run_with_input()
 
-        # No use in storing it if it's loaded from the dataset.
         if not from_cache:
             stage.store_in_dataset(results)
 
@@ -188,6 +199,9 @@ class Stage(ABC, Generic[ResultType, ConfigType]):
             stage.report_results(results)
 
         return results
+
+
+
 
     @final
     def _run_with_input(self) -> ResultMap[ResultType]:

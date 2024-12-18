@@ -26,6 +26,8 @@ class MainConfig(Config):
             default=Path('data'), final=True)
     force: Option[bool] = Option(
             'Force regeneration of cached results', default=False)
+    delete: Option[bool] = Option(
+                'Delete the output directory before running', default=False)
 
     @property
     def output_directory(self) -> Path:
