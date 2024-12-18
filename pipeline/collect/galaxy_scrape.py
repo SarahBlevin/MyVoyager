@@ -8,7 +8,7 @@ from pathlib import Path
 
 from tqdm import tqdm
 
-from config import MainConfig
+from config import GalaxyScrapeConfig
 from models.galaxy import GalaxyAPIPage
 from pipeline.base import ResultMap, Stage
 from services.galaxy import GalaxyAPI
@@ -33,7 +33,7 @@ PAGE_SIZES = {
 }
 
 
-class GalaxyScrape(Stage[GalaxyAPIPage, MainConfig]):
+class GalaxyScrape(Stage[GalaxyAPIPage, GalaxyScrapeConfig]):
     """Discover roles to put in the dataset."""
 
     dataset_dir_name = 'GalaxyScrape'
