@@ -22,7 +22,6 @@ from util import capitalized_to_underscored
 from shutil import rmtree
 
 
-
 IDType = str
 
 
@@ -46,6 +45,9 @@ class WithIDAndDump(Protocol):
 
 ResultType = TypeVar('ResultType', bound=WithIDAndDump)
 ConfigType = TypeVar('ConfigType', bound=MainConfig)
+
+# Ajout explicite de l'étape dans STAGES
+
 
 _converter = cattr.Converter()
 _converter.register_structure_hook(
@@ -231,6 +233,9 @@ class Stage(ABC, Generic[ResultType, ConfigType]):
 
     def store_in_dataset(self, results: ResultMap[ResultType]) -> None:
         """Store the results of a stage in the dataset."""
+        if results is None:
+            return
+        
         dataset_dir_path = self.config.output_directory / self.dataset_dir_name
         dataset_dir_path.mkdir(exist_ok=True, parents=True)
         index: Dict[str, str] = {}
@@ -249,6 +254,7 @@ class Stage(ABC, Generic[ResultType, ConfigType]):
 
         Raises `CacheMiss` when not found in the dataset.
         """
+
         dataset_dir_path = self.config.output_directory / self.dataset_dir_name
         target_type: Type[ResultType] = self._extract_result_type()
         result_type = Mapping[str, target_type]  # type: ignore[valid-type]
