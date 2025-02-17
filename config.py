@@ -44,6 +44,22 @@ class GalaxyScrapeConfig(MainConfig):
         required=False,
     )
 
+class CustomScrapeConfig(MainConfig):
+    """Configuration for custom scraping."""
+
+    # New option to limit the number of roles imported
+    max_roles: Option[int] = Option(
+        '--max-roles', 
+        default=None,  # Default to None to indicate no limit
+        required=False,
+    )
+
+    schema: Option[Path] = Option(
+    '--schema',
+    click_type=click.Path(exists=True, readable=True, resolve_path=True),
+    converter=Path,  # Explicitly converts input to a Path object
+    required=True)
+
 class ExtractRoleMetadataConfig(MainConfig):
     """Configuration for role metadata extraction."""
 
