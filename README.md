@@ -36,19 +36,35 @@ Voyager++ is an advanced tool for collecting and analyzing datasets of Ansible r
 
 ### Basic Operations
 
-- **Scrape data from Ansible Galaxy**:
+- **Scrape data from Ansible Galaxy**: Collects role information from Ansible Galaxy.
   ```sh
   poetry run -- python main.py --progress --report --dataset my_data galaxy-scrape
   ```
-- **Extract metadata**:
+- **Custom scrape with user-defined schema**: Collects role data while filtering unnecessary attributes using a custom schema.
+  ```sh
+  poetry run -- python main.py --progress --report --dataset my_data custom-scrape --schema my_schema.json
+  ```
+- **Extract role metadata**: Extracts structured metadata (e.g., role dependencies, GitHub repositories) from the scraped dataset.
   ```sh
   poetry run -- python main.py --dataset my_data extract-role-metadata
   ```
-- **Clone repositories**:
+- **Clone repositories**: Downloads the Git repositories for roles found in metadata.
   ```sh
   poetry run -- python main.py --dataset my_data clone
   ```
-- **Run a datamining script**:
+- **Extract Git metadata**: Retrieves commit history, branches, and tags from cloned repositories.
+  ```sh
+  poetry run -- python main.py --dataset my_data extract-git-metadata
+  ```
+- **Extract structural models** (for semantic version tags): Analyzes the structure of Ansible roles at each versioned release.
+  ```sh
+  poetry run -- python main.py --dataset my_data extract-structural-models
+  ```
+- **Extract structural models** (for each commit instead of versions): Captures structural changes in roles at every commit.
+  ```sh
+  poetry run -- python main.py --dataset my_data extract-structural-models --commits
+  ```
+- **Run a datamining script**: Executes an external analysis script on the dataset.
   ```sh
   poetry run -- python main.py --dataset my_data datamine-stage --path my_script.py
   ```
@@ -70,4 +86,4 @@ Voyager++ supports easy customization for specific research needs:
 
 - Frontend integration for better visualization.
 
-For detailed documentation, visit the full [Voyager++ repository](https://github.com/NotArobase/Voyager.git).
+For detailed documentation, visit the full [Voyager++ repository](https://github.com/NotArobase/Voyager.git) or read the full user documentation.
