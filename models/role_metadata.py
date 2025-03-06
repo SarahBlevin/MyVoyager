@@ -31,7 +31,7 @@ CONVERTER.register_structure_hook(
 CONVERTER.register_unstructure_hook(
         pendulum.DateTime, lambda dt: dt.to_rfc3339_string())
 
-
+CONVERTER.register_structure_hook(Union[int, str], lambda v, _: v)
 
 class MetadataMap:
     """Maps entity IDs to their JSON-parsed objects."""
@@ -612,7 +612,7 @@ class Platform(GalaxyEntity):
 class RoleVersion(GalaxyEntity):
     """Model for a role version."""
 
-    entity_id: int
+    entity_id: Union[int, str]
     version: str
     release_date: Optional[pendulum.DateTime]
 
@@ -956,7 +956,7 @@ class _LazyDict(Mapping[int, _EntityType]):
         if self._storage is None:
             self._storage = CONVERTER.structure(
                     yaml.load(self._file_path.read_text(), Loader=Loader),
-                    Dict[int, self._etype])  # type: ignore[name-defined]
+                Dict[Union[int, str], self._etype])  # type: ignore[name-defined]
 
 
     def __len__(self) -> int:

@@ -3,6 +3,7 @@
 from pathlib import Path
 
 import click
+import json
 
 from util.config import Config, Option
 
@@ -84,10 +85,17 @@ class ExtractStructuralModelsConfig(MainConfig):
 
 class DatamineConfig(MainConfig):
     """Configuration for datamining."""
-    options: Optional[Dict[str, Any]] = Option(
-        'Options to pass to the algorithm script', default=None, required=False)
+
+    
+    options: Option[Dict[str, Any]] = Option(
+        'Options à passer au script d’algorithme sous format JSON',
+        default={},
+        required=False,
+        click_type=str, 
+        converter=lambda x: json.loads(x) if x else {}  # j ai modifié options pour que ca marche ceci convertit le json en dict
+    )
     
     path: Option[Path] = Option(
         'Path to the algorithm script', click_type=click.Path(exists=True, readable=True, resolve_path=True),
         converter=Path, required=True)
-   
+

@@ -442,7 +442,7 @@ SCHEMAS: Dict[str, Dict[str, Any]] = {
             },
             'tags': [str],
             'versions': [{
-                'id': (int,None),
+                'id': (int, str, None),
                 'name': str,
                 'release_date': (pendulum.DateTime, None),
             }],
