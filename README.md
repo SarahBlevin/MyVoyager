@@ -68,6 +68,7 @@ Assumig poetry shell is spawned:
   python main.py --dataset my_data extract-structural-models --commits
   ```
 - **Run a datamining script**: Executes an external analysis script on the dataset.
+
   ```sh
   python main.py --dataset my_data datamine-stage --path path/to/my_script.py
   ```
