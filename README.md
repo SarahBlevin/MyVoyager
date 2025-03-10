@@ -1,6 +1,6 @@
 # Voyager++
 
-Voyager++ is an advanced tool for collecting and analyzing datasets of Ansible roles from Ansible Galaxy. It builds on the original Voyager, addressing obsolescence and dependencies while introducing a datamining stage for deeper insights into role version histories. Designed for research projects, such as For-CoaLa, Voyager++ enables flexible data collection, repository analysis, and structural evolution tracking.
+Voyager++ is an advanced tool for collecting and analyzing datasets of Ansible roles from Ansible Galaxy. It builds on the original Voyager tool by Ruben Opdebeeck, addressing obsolescence and dependencies while introducing a datamining stage for deeper insights into role version histories. Designed for research projects, such as For-CoaLa, Voyager++ enables flexible data collection, repository analysis, and structural evolution tracking.
 
 ## Features
 
@@ -29,44 +29,45 @@ Voyager++ is an advanced tool for collecting and analyzing datasets of Ansible r
    ```
 3. Verify installation:
    ```sh
-   poetry run -- python main.py --help
+   poetry shell
+   python main.py --help
    ```
 
 ## Usage
 
 ### Basic Operations
 
-- **Scrape data from Ansible Galaxy**: Collects role information from Ansible Galaxy.
+- **Scrape data from Ansible Galaxy**: Collects role information from Ansible Galaxy. Limit the number of collected roles using the option --max-roles INT.
   ```sh
-  poetry run -- python main.py --progress --report --dataset my_data galaxy-scrape
+  python main.py --progress --report --dataset my_data galaxy-scrape
   ```
 - **Custom scrape with user-defined schema**: Collects role data while filtering unnecessary attributes using a custom schema.
   ```sh
-  poetry run -- python main.py --progress --report --dataset my_data custom-scrape --schema my_schema.json
+  python main.py --progress --report --dataset my_data custom-scrape --schema path/to/my_schema.json
   ```
 - **Extract role metadata**: Extracts structured metadata (e.g., role dependencies, GitHub repositories) from the scraped dataset.
   ```sh
-  poetry run -- python main.py --dataset my_data extract-role-metadata
+  python main.py --dataset my_data extract-role-metadata
   ```
 - **Clone repositories**: Downloads the Git repositories for roles found in metadata.
   ```sh
-  poetry run -- python main.py --dataset my_data clone
+  python main.py --dataset my_data clone
   ```
 - **Extract Git metadata**: Retrieves commit history, branches, and tags from cloned repositories.
   ```sh
-  poetry run -- python main.py --dataset my_data extract-git-metadata
+  python main.py --dataset my_data extract-git-metadata
   ```
 - **Extract structural models** (for semantic version tags): Analyzes the structure of Ansible roles at each versioned release.
   ```sh
-  poetry run -- python main.py --dataset my_data extract-structural-models
+  python main.py --dataset my_data extract-structural-models
   ```
 - **Extract structural models** (for each commit instead of versions): Captures structural changes in roles at every commit.
   ```sh
-  poetry run -- python main.py --dataset my_data extract-structural-models --commits
+  python main.py --dataset my_data extract-structural-models --commits
   ```
 - **Run a datamining script**: Executes an external analysis script on the dataset.
   ```sh
-  poetry run -- python main.py --dataset my_data datamine-stage --path my_script.py
+  python main.py --dataset my_data datamine-stage --path path/to/my_script.py
   ```
 
 ## Customization
@@ -74,7 +75,8 @@ Voyager++ is an advanced tool for collecting and analyzing datasets of Ansible r
 Voyager++ supports easy customization for specific research needs:
 
 - **Custom Scraping**: Define a JSON schema to filter collected data.
-- **Datamining**: Plug in external analysis scripts.
+- **Datamining**: Plug in external analysis scripts. Said script must contain two specific functions (see user documentation).
+  The tool comes with a number of "default" relevant datamining scripts, stored in Voyager/pipeline/datamine
 - **Pipeline Extension**: Modify or add processing stages.
 
 ## Troubleshooting
@@ -85,5 +87,6 @@ Voyager++ supports easy customization for specific research needs:
 ## Future Enhancements
 
 - Frontend integration for better visualization.
+- Containerization
 
 For detailed documentation, visit the full [Voyager++ repository](https://github.com/NotArobase/Voyager.git) or read the full user documentation.
