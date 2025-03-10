@@ -72,6 +72,9 @@ Assumig poetry shell is spawned:
   python main.py --dataset my_data datamine-stage --path path/to/my_script.py
   ```
 
+  With every operation:
+  Use the --report option to print the details of the process in the console. Use the --delete option to remove the folder of the current stage if it exists already.
+
 ## Customization
 
 Voyager++ supports easy customization for specific research needs:
