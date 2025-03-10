@@ -29,13 +29,15 @@ Voyager++ is an advanced tool for collecting and analyzing datasets of Ansible r
    ```
 3. Verify installation:
    ```sh
-   poetry shell
-   python main.py --help
+   poetry run -- python main.py --help
    ```
+   Check the help text.
 
 ## Usage
 
 ### Basic Operations
+
+Assumig poetry shell is spawned:
 
 - **Scrape data from Ansible Galaxy**: Collects role information from Ansible Galaxy. Limit the number of collected roles using the option --max-roles INT.
   ```sh
