@@ -1,0 +1,13 @@
+Registering <class 'pipeline.collect.galaxy_scrape.GalaxyScrape'> with <class 'config.GalaxyScrapeConfig'>
+Registering <class 'pipeline.collect.custom_scrape.CustomScrape'> with <class 'config.CustomScrapeConfig'>
+Registering <class 'pipeline.extract.extract_role_metadata.ExtractRoleMetadata'> with <class 'config.ExtractRoleMetadataConfig'>
+Registering <class 'pipeline.collect.clone.Clone'> with <class 'config.CloneConfig'>
+Registering <class 'pipeline.extract.extract_git_metadata.ExtractGitMetadata'> with <class 'config.MainConfig'>
+Registering <class 'pipeline.extract.extract_structural_models.ExtractStructuralModels'> with <class 'config.ExtractStructuralModelsConfig'>
+Registering <class 'pipeline.extract.extract_structural_diffs.ExtractStructuralDiffs'> with <class 'config.MainConfig'>
+Registering <class 'pipeline.datamine.datamine_roles.DatamineStage'> with <class 'config.DatamineConfig'>
+Setting output directory to data/default
+Results for GalaxyScrape not found in cache, running...
+Loading roles pages: 0pages [00:00, ?pages/s]Loading roles pages:   1%|          | 1/141 [00:03<08:58,  3.85s/pages]Loading roles pages:   1%|▏         | 2/141 [00:06<07:52,  3.40s/pages]Loading roles pages:   2%|▏         | 3/141 [00:09<06:52,  2.99s/pages]Loading roles pages:   3%|▎         | 4/141 [00:12<06:40,  2.92s/pages]Loading roles pages:   4%|▎         | 5/141 [00:14<06:02,  2.67s/pages]Loading roles pages:   4%|▍         | 6/141 [00:17<06:33,  2.91s/pages]Loading roles pages:   5%|▍         | 7/141 [00:21<07:08,  3.19s/pages]Loading roles pages:   6%|▌         | 8/141 [00:24<06:40,  3.01s/pages]Loading roles pages:   6%|▋         | 9/141 [00:26<06:20,  2.88s/pages]
+Aborted!
+                                                                       
