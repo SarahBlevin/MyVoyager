@@ -1,14 +1,0 @@
-Registering <class 'pipeline.collect.galaxy_scrape.GalaxyScrape'> with <class 'config.GalaxyScrapeConfig'>
-Registering <class 'pipeline.collect.custom_scrape.CustomScrape'> with <class 'config.CustomScrapeConfig'>
-Registering <class 'pipeline.extract.extract_role_metadata.ExtractRoleMetadata'> with <class 'config.ExtractRoleMetadataConfig'>
-Registering <class 'pipeline.collect.clone.Clone'> with <class 'config.CloneConfig'>
-Registering <class 'pipeline.extract.extract_git_metadata.ExtractGitMetadata'> with <class 'config.MainConfig'>
-Registering <class 'pipeline.extract.extract_structural_models.ExtractStructuralModels'> with <class 'config.ExtractStructuralModelsConfig'>
-Registering <class 'pipeline.extract.extract_structural_diffs.ExtractStructuralDiffs'> with <class 'config.MainConfig'>
-Registering <class 'pipeline.datamine.datamine_roles.DatamineStage'> with <class 'config.DatamineConfig'>
-Setting output directory to data/my_data2
-Deleted directory: data/my_data2/CustomScrape
-Results for CustomScrape not found in cache, running...
-Loading roles pages: 0pages [00:00, ?pages/s]Loading roles pages:   1%|          | 1/141 [00:02<05:34,  2.39s/pages]                                                                       data/my_data2/CustomScrape/roles_1.json
---- Custom Scrape ---
-Loaded 1 pages of API results

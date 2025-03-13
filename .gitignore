@@ -6,3 +6,4 @@ htmlcov
 data
 .DS_Store
 venv
+voyager_api/logs
