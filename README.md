@@ -35,6 +35,10 @@ Voyager++ is an advanced tool for collecting and analyzing datasets of Ansible r
 
 ## Usage
 
+### API
+
+For use of the Voyager API, please refer to the readme file found in folder voyager_api.
+
 ### Basic Operations
 
 Assumig poetry shell is spawned:
@@ -87,7 +91,7 @@ Voyager++ supports easy customization for specific research needs:
 
 ## Troubleshooting
 
-- **Poetry not found?** Ensure it's installed and added to `PATH`.
+- **Poetry not found?** Ensure it's installed and added to `PATH`. If you have too many problems using Poetry; there exists a poetry-free version of Voyager found at: https://github.com/SarahBlevin/MyVoyager.git where you can download the dependencies in a venv via bash script.
 - **Errors in metadata extraction?** Check dataset integrity and rerun the scraping step.
 
 ## Future Enhancements
