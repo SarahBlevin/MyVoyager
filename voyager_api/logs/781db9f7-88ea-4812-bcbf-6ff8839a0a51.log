@@ -6,5 +6,4 @@ Registering <class 'pipeline.extract.extract_git_metadata.ExtractGitMetadata'> w
 Registering <class 'pipeline.extract.extract_structural_models.ExtractStructuralModels'> with <class 'config.ExtractStructuralModelsConfig'>
 Registering <class 'pipeline.extract.extract_structural_diffs.ExtractStructuralDiffs'> with <class 'config.MainConfig'>
 Registering <class 'pipeline.datamine.datamine_roles.DatamineStage'> with <class 'config.DatamineConfig'>
-Setting output directory to data/my_data
-Results for ExtractRoleMetadata not found in cache, running...
+Setting output directory to data/my_data2

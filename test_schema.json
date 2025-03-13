@@ -1,0 +1,36 @@
+{
+    "commit": false,
+    "commit_message": false,
+    "created": false,
+    "description": true,
+    "download_count": false,
+    "github_branch": false,
+    "github_repo": false,
+    "github_user": false,
+    "id": true,
+    "imported": false,
+    "modified": false,
+    "name": true,
+    "summary_fields": {
+      "dependencies": false,
+      "namespace": {
+        "avatar_url": false,
+        "id": false,
+        "name": false
+      },
+      "provider_namespace": {
+        "id": false,
+        "name": false,
+        "pulp_href": false
+      },
+      "repository": {
+        "name": false,
+        "original_name": false
+      },
+      "tags": false,
+      "versions": false
+    },
+    "upstream_id": false,
+    "username": false
+  }
+  

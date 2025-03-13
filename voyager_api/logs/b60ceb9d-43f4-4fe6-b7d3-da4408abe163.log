@@ -1,0 +1,87 @@
+Registering <class 'pipeline.collect.galaxy_scrape.GalaxyScrape'> with <class 'config.GalaxyScrapeConfig'>
+Registering <class 'pipeline.collect.custom_scrape.CustomScrape'> with <class 'config.CustomScrapeConfig'>
+Registering <class 'pipeline.extract.extract_role_metadata.ExtractRoleMetadata'> with <class 'config.ExtractRoleMetadataConfig'>
+Registering <class 'pipeline.collect.clone.Clone'> with <class 'config.CloneConfig'>
+Registering <class 'pipeline.extract.extract_git_metadata.ExtractGitMetadata'> with <class 'config.MainConfig'>
+Registering <class 'pipeline.extract.extract_structural_models.ExtractStructuralModels'> with <class 'config.ExtractStructuralModelsConfig'>
+Registering <class 'pipeline.extract.extract_structural_diffs.ExtractStructuralDiffs'> with <class 'config.MainConfig'>
+Registering <class 'pipeline.datamine.datamine_roles.DatamineStage'> with <class 'config.DatamineConfig'>
+Setting output directory to data/my_data2
+Results for DatamineStage not found in cache, running...
+Traitement du rôle avec ID : 030.ansible_bfg
+Traitement du rôle avec ID : 030.ansible_bfg
+Traitement du rôle avec ID : 030.ansible_bfg
+Fichier 'data/my_data2/StructuralModels/index.yaml' à vérifier : 00willo.sublimetext-3
+Nom du fichier qui pose problème : data/my_data2/StructuralModels/index.yaml
+Fichier 'data/my_data2/StructuralModels/index.yaml' à vérifier : 030.ansible_bfg
+Nom du fichier qui pose problème : data/my_data2/StructuralModels/index.yaml
+Fichier 'data/my_data2/StructuralModels/index.yaml' à vérifier : 030.ansible_eksctl
+Nom du fichier qui pose problème : data/my_data2/StructuralModels/index.yaml
+Fichier 'data/my_data2/StructuralModels/index.yaml' à vérifier : 030.ansible_firefox
+Nom du fichier qui pose problème : data/my_data2/StructuralModels/index.yaml
+Fichier 'data/my_data2/StructuralModels/index.yaml' à vérifier : 030.ansible_git_crypt
+Nom du fichier qui pose problème : data/my_data2/StructuralModels/index.yaml
+Fichier 'data/my_data2/StructuralModels/index.yaml' à vérifier : 030.ansible_mongodb_org_shell
+Nom du fichier qui pose problème : data/my_data2/StructuralModels/index.yaml
+Fichier 'data/my_data2/StructuralModels/index.yaml' à vérifier : 030.ansible_ssllabs_scan
+Nom du fichier qui pose problème : data/my_data2/StructuralModels/index.yaml
+Fichier 'data/my_data2/StructuralModels/index.yaml' à vérifier : 030.ansible_ssr
+Nom du fichier qui pose problème : data/my_data2/StructuralModels/index.yaml
+Fichier 'data/my_data2/StructuralModels/index.yaml' à vérifier : 030.ansible_velero
+Nom du fichier qui pose problème : data/my_data2/StructuralModels/index.yaml
+Traitement du rôle avec ID : 030.ansible_mongodb_org_shell
+Traitement du rôle avec ID : 030.ansible_mongodb_org_shell
+Traitement du rôle avec ID : 030.ansible_eksctl
+Traitement du rôle avec ID : 030.ansible_eksctl
+Traitement du rôle avec ID : 030.ansible_eksctl
+Traitement du rôle avec ID : 030.ansible_eksctl
+Traitement du rôle avec ID : 030.ansible_eksctl
+Traitement du rôle avec ID : 030.ansible_eksctl
+Traitement du rôle avec ID : 030.ansible_eksctl
+Traitement du rôle avec ID : 030.ansible_eksctl
+Traitement du rôle avec ID : 00willo.sublimetext-3
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_firefox
+Traitement du rôle avec ID : 030.ansible_velero
+Traitement du rôle avec ID : 030.ansible_velero
+Traitement du rôle avec ID : 030.ansible_velero
+Traitement du rôle avec ID : 030.ansible_velero
+Traitement du rôle avec ID : 030.ansible_velero
+Traitement du rôle avec ID : 030.ansible_velero
+Traitement du rôle avec ID : 030.ansible_ssllabs_scan
+Traitement du rôle avec ID : 030.ansible_ssllabs_scan
+Traitement du rôle avec ID : 030.ansible_ssr
+Traitement du rôle avec ID : 030.ansible_ssr
+Traitement du rôle avec ID : 030.ansible_ssr
+Traitement du rôle avec ID : 030.ansible_git_crypt
+Traitement du rôle avec ID : 030.ansible_git_crypt
+Rôles dupliqués détectés : {'030.ansible_bfg': 2, '030.ansible_mongodb_org_shell': 2, '030.ansible_eksctl': 2, '030.ansible_firefox': 2, '030.ansible_velero': 2, '030.ansible_ssllabs_scan': 2, '030.ansible_ssr': 2, '030.ansible_git_crypt': 2}
+[MostUsedRoles(name='030.ansible_bfg', modules=[Module(name='include', uses=2), Module(name='command', uses=2), Module(name='get_url', uses=2)]), MostUsedRoles(name='030.ansible_mongodb_org_shell', modules=[Module(name='include', uses=2), Module(name='apt', uses=4), Module(name='apt_key', uses=2), Module(name='apt_repository', uses=2)]), MostUsedRoles(name='030.ansible_eksctl', modules=[Module(name='command', uses=2), Module(name='get_url', uses=2), Module(name='unarchive', uses=2)]), MostUsedRoles(name='00willo.sublimetext-3', modules=[Module(name='rpm_key', uses=1), Module(name='yum_repository', uses=2), Module(name='dnf', uses=1)]), MostUsedRoles(name='030.ansible_firefox', modules=[Module(name='include_vars', uses=4), Module(name='get_url', uses=2), Module(name='package', uses=4), Module(name='file', uses=4), Module(name='unarchive', uses=2), Module(name='template', uses=2)]), MostUsedRoles(name='030.ansible_velero', modules=[Module(name='command', uses=2), Module(name='get_url', uses=2)]), MostUsedRoles(name='030.ansible_ssllabs_scan', modules=[Module(name='command', uses=2), Module(name='get_url', uses=2)]), MostUsedRoles(name='030.ansible_ssr', modules=[Module(name='include', uses=2), Module(name='command', uses=6), Module(name='apt', uses=6), Module(name='shell', uses=2), Module(name='git', uses=2), Module(name='file', uses=2)]), MostUsedRoles(name='030.ansible_git_crypt', modules=[Module(name='include', uses=2), Module(name='command', uses=2), Module(name='file', uses=2), Module(name='git', uses=2), Module(name='make', uses=4), Module(name='yum', uses=2)])]
+Chart saved to data/my_data2/Datamine/test1.py/top_8_modules.png

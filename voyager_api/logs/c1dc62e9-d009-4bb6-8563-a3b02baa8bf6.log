@@ -1,0 +1,57 @@
+Registering <class 'pipeline.collect.galaxy_scrape.GalaxyScrape'> with <class 'config.GalaxyScrapeConfig'>
+Registering <class 'pipeline.collect.custom_scrape.CustomScrape'> with <class 'config.CustomScrapeConfig'>
+Registering <class 'pipeline.extract.extract_role_metadata.ExtractRoleMetadata'> with <class 'config.ExtractRoleMetadataConfig'>
+Registering <class 'pipeline.collect.clone.Clone'> with <class 'config.CloneConfig'>
+Registering <class 'pipeline.extract.extract_git_metadata.ExtractGitMetadata'> with <class 'config.MainConfig'>
+Registering <class 'pipeline.extract.extract_structural_models.ExtractStructuralModels'> with <class 'config.ExtractStructuralModelsConfig'>
+Registering <class 'pipeline.extract.extract_structural_diffs.ExtractStructuralDiffs'> with <class 'config.MainConfig'>
+Registering <class 'pipeline.datamine.datamine_roles.DatamineStage'> with <class 'config.DatamineConfig'>
+Setting output directory to data/my_data2
+Deleted directory: data/my_data2/Datamine
+Results for DatamineStage not found in cache, running...
+Traceback (most recent call last):
+  File "/home/florent/Documents/Sarahcours/FISEA3/PROCOM/MyVoyager/pipeline/base.py", line 264, in load_from_dataset
+    with (dataset_dir_path / 'index.yaml').open('rt') as f_index:
+  File "/usr/lib/python3.8/pathlib.py", line 1222, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/usr/lib/python3.8/pathlib.py", line 1078, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: 'data/my_data2/Datamine/index.yaml'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/florent/Documents/Sarahcours/FISEA3/PROCOM/MyVoyager/pipeline/base.py", line 189, in process
+    results = stage.load_from_dataset()
+  File "/home/florent/Documents/Sarahcours/FISEA3/PROCOM/MyVoyager/pipeline/base.py", line 275, in load_from_dataset
+    raise CacheMiss()
+pipeline.base.CacheMiss
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main.py", line 50, in <module>
+    main(obj=None)
+  File "/home/florent/Documents/Sarahcours/FISEA3/PROCOM/MyVoyager/venv/lib/python3.8/site-packages/click/core.py", line 829, in __call__
+    return self.main(*args, **kwargs)
+  File "/home/florent/Documents/Sarahcours/FISEA3/PROCOM/MyVoyager/venv/lib/python3.8/site-packages/click/core.py", line 782, in main
+    rv = self.invoke(ctx)
+  File "/home/florent/Documents/Sarahcours/FISEA3/PROCOM/MyVoyager/venv/lib/python3.8/site-packages/click/core.py", line 1289, in invoke
+    rv.append(sub_ctx.command.invoke(sub_ctx))
+  File "/home/florent/Documents/Sarahcours/FISEA3/PROCOM/MyVoyager/venv/lib/python3.8/site-packages/click/core.py", line 1066, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/home/florent/Documents/Sarahcours/FISEA3/PROCOM/MyVoyager/venv/lib/python3.8/site-packages/click/core.py", line 610, in invoke
+    return callback(*args, **kwargs)
+  File "/home/florent/Documents/Sarahcours/FISEA3/PROCOM/MyVoyager/venv/lib/python3.8/site-packages/click/decorators.py", line 21, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "/home/florent/Documents/Sarahcours/FISEA3/PROCOM/MyVoyager/util/cli.py", line 119, in wrapper
+    return f(_args_to_config(ctx, config_type, config_options, **kwargs))
+  File "/home/florent/Documents/Sarahcours/FISEA3/PROCOM/MyVoyager/pipeline/base.py", line 193, in process
+    results = stage._run_with_input()
+  File "/home/florent/Documents/Sarahcours/FISEA3/PROCOM/MyVoyager/pipeline/base.py", line 232, in _run_with_input
+    self.run(**input_data))  # type: ignore[attr-defined]
+  File "/home/florent/Documents/Sarahcours/FISEA3/PROCOM/MyVoyager/pipeline/datamine/datamine_roles.py", line 34, in run
+    result = external_algo.algo(self.config, "StructuralModels", self.config.options)
+  File "/home/florent/Documents/Sarahcours/FISEA3/PROCOM/MyVoyager/pipeline/datamine/test1.py", line 18, in algo
+    num_modules = options.get("num_modules", 8) if options else 8
+AttributeError: 'str' object has no attribute 'get'
